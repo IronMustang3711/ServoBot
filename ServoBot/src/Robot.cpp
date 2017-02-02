@@ -34,7 +34,7 @@ public:
 
 	}
 
-	void RobotInit() {
+	 void RobotInit() {
 		chooser.AddDefault(autoNameDefault, autoNameDefault);
 		chooser.AddObject(autoNameCustom, autoNameCustom);
 		frc::SmartDashboard::PutData("Auto Modes", &chooser);
