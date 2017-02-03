@@ -1,12 +1,9 @@
 cmake_minimum_required(VERSION 3.6)
 set(CMAKE_TOOLCHAIN_FILE  arm-toolchain.cmake)
 include(arm-toolchain.cmake)
-
+#-DCMAKE_TOOLCHAIN_FILE=arm-toolchain.cmake
 project(ServoBot)
 set(TEAM_NUMBER 3711)
-
-
-
 
 
 set(WPI_DIR "$ENV{HOME}/wpilib")
@@ -46,15 +43,7 @@ file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 add_executable(FRCUserProgram ${SOURCE_FILES})
 target_link_libraries(FRCUserProgram wpi)
 
-add_custom_target("deploy"
-        COMMAND sh -c "./deploy.sh \
-                        ${TEAM_NUMBER} \
-                        $<TARGET_FILE:FRCUserProgram> \
-                        ${WPI_DIR}/cpp/current/ant/robotCommand"
-        DEPENDS ${PROJECT_NAME}
-        set_target_properties(${TARGET_NAME} PROPERTIES EXCLUDE_FROM_ALL TRUE)
-        )
-#TODO how do i tell ant where the executable is?
+
 add_custom_target("antDeploy"
         COMMAND ant -f ${CMAKE_CURRENT_SOURCE_DIR}/build.xml
-        DEPENDS ${PROJECT_NAME})
+        DEPENDS FRCUserProgram)

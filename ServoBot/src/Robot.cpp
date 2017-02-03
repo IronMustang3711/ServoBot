@@ -12,12 +12,11 @@
 
 class ServoBot: public frc::SampleRobot {
 
-	frc::Joystick stick { 0 };
-	frc::Servo servo {8};
+	frc::Joystick stick;
+	frc::Servo servo;
 
 public:
-	ServoBot() {
-
+	ServoBot():stick(0),servo(8) {
 	}
 
 
