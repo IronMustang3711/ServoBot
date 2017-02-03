@@ -1,6 +1,5 @@
 #include <iostream>
 #include <memory>
-#include <string>
 #include <Servo.h>
 #include <Joystick.h>
 #include <SampleRobot.h>
@@ -16,13 +15,10 @@ class ServoBot: public frc::SampleRobot {
 	frc::Servo servo;
 
 public:
-	ServoBot():stick(0),servo(8) {
-	}
+	ServoBot():stick(0),servo(8) {}
 
 
-	/*
-	 * Runs the motors with arcade steering.
-	 */
+
 	void OperatorControl() override {
 		while (IsOperatorControl() && IsEnabled()) {
 			double amt = (stick.GetRawAxis(3)+1)*0.5;
